@@ -275,6 +275,12 @@ angular.module('adf')
           $rootScope.$broadcast('adfDashboardEditsCancelled');
         };
 
+        $scope.removeDashboard = function(){
+          $scope.editMode = false;
+          $scope.modelCopy = angular.copy($scope.modelCopy, $scope.adfModel);
+          $rootScope.$broadcast('adfDashboardRemove');
+        };
+
         // edit dashboard settings
         $scope.editDashboardDialog = function(){
           var editDashboardScope = $scope.$new();
@@ -364,7 +370,7 @@ angular.module('adf')
         if (angular.isDefined($attr.editable)){
           options.editable = stringToBoolean($attr.editable);
         }
-        if (angular.isDefined($attr.editMode)) {
+        if (options.editable && angular.isDefined($attr.editMode)) {
           options.editMode = stringToBoolean($attr.editMode);
           $scope.editMode = options.editMode;
         }

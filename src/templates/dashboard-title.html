@@ -10,6 +10,9 @@
     <a href="" ng-if="options.editable" title="{{editMode ? 'save changes' : 'enable edit mode'}}" ng-click="toggleEditMode()">
       <i class="glyphicon" x-ng-class="{'glyphicon-edit' : !editMode, 'glyphicon-save' : editMode}"></i>
     </a>
+    <a href="" ng-if="editMode" title="remove dashboard'}}" ng-click="removeDashboard()">
+        <i class="glyphicon glyphicon-trash"></i>
+    </a>
     <a href="" ng-if="editMode" title="undo changes" ng-click="cancelEditMode()">
       <i class="glyphicon glyphicon-repeat adf-flip"></i>
     </a>
