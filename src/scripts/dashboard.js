@@ -278,7 +278,7 @@ angular.module('adf')
         $scope.removeDashboard = function(){
           $scope.editMode = false;
           $scope.modelCopy = angular.copy($scope.modelCopy, $scope.adfModel);
-          $rootScope.$broadcast('adfDashboardRemove');
+          $rootScope.$broadcast('adfDashboardRemove', name, model);
         };
 
         // edit dashboard settings
