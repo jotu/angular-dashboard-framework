@@ -253,6 +253,7 @@ angular.module('adf')
  *
  * @param {string} name name of the dashboard. This attribute is required.
  * @param {boolean=} editable false to disable the editmode of the dashboard.
+ * @param {boolean=} editMode true to view in edit mode after creation of dashboard.
  * @param {boolean=} collapsible true to make widgets collapsible on the dashboard.
  * @param {boolean=} maximizable true to add a button for open widgets in a large modal panel.
  * @param {boolean=} enableConfirmDelete true to ask before remove an widget from the dashboard.
@@ -419,6 +420,7 @@ angular.module('adf')
         name: '@',
         collapsible: '@',
         editable: '@',
+        editMode: '@',
         maximizable: '@',
         adfModel: '=',
         adfWidgetFilter: '='
@@ -466,7 +468,7 @@ angular.module('adf')
         }, true);
 
         // edit mode
-        $scope.editMode = false;
+        //$scope.editMode = false;
         $scope.editClass = '';
 
         $scope.toggleEditMode = function(){
@@ -571,12 +573,17 @@ angular.module('adf')
         var options = {
           name: $attr.name,
           editable: true,
+          editMode: false,
           enableConfirmDelete: stringToBoolean($attr.enableconfirmdelete),
           maximizable: stringToBoolean($attr.maximizable),
           collapsible: stringToBoolean($attr.collapsible)
         };
         if (angular.isDefined($attr.editable)){
           options.editable = stringToBoolean($attr.editable);
+        }
+        if (angular.isDefined($attr.editMode)) {
+          options.editMode = stringToBoolean($attr.editMode);
+          $scope.editMode = options.editMode;
         }
         $scope.options = options;
       },
