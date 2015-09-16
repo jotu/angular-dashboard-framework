@@ -493,8 +493,6 @@ angular.module('adf')
         };
 
         $scope.removeDashboard = function(){
-          $scope.editMode = false;
-          $scope.modelCopy = angular.copy($scope.modelCopy, $scope.adfModel);
           $rootScope.$broadcast('adfDashboardRemove', name, model);
         };
 
